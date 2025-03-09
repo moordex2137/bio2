@@ -250,9 +250,7 @@ body {
     display: flex;
     gap: 8px;
     padding: 8px;
-    background: rgba(30, 31, 34, 0.8);
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     width: calc(40px * 5 + 8px * 4); /* Exactly 5 items (40px each) + 4 gaps (8px each) */
     transition: transform 0.3s ease;
@@ -298,6 +296,7 @@ body {
     transition: all 0.2s ease, opacity 0.3s ease;
     flex-shrink: 0;
     z-index: 2;
+    backdrop-filter: blur(10px);
 }
 
 .nav-button:hover {
