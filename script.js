@@ -211,4 +211,54 @@ ws.onerror = () => {
             }
         })
         .catch(console.error);
-}; 
+};
+
+// Social links navigation
+let currentGroup = 0;
+const itemsPerGroup = 5;
+
+function scrollSocialLinks(direction) {
+    const wrapper = document.querySelector('.social-links-wrapper');
+    const items = wrapper.querySelectorAll('.tooltip-wrapper');
+    const totalGroups = Math.ceil(items.length / itemsPerGroup);
+
+    // Update current group with bounds checking
+    currentGroup = Math.max(0, Math.min(totalGroups - 1, currentGroup + direction));
+    
+    // Calculate the width of one group (including gaps)
+    const itemWidth = 40; // Item width
+    const gapWidth = 8;  // Gap width
+    const groupWidth = (itemWidth * itemsPerGroup) + (gapWidth * (itemsPerGroup - 1));
+    
+    // Apply the transform
+    wrapper.style.transform = `translateX(-${currentGroup * groupWidth}px)`;
+
+    // Update button visibility
+    updateNavButtonsVisibility();
+}
+
+function updateNavButtonsVisibility() {
+    const wrapper = document.querySelector('.social-links-wrapper');
+    const items = wrapper.querySelectorAll('.tooltip-wrapper');
+    const totalGroups = Math.ceil(items.length / itemsPerGroup);
+    
+    const leftNav = document.querySelector('.left-nav');
+    const rightNav = document.querySelector('.right-nav');
+
+    // Show/hide left button
+    leftNav.style.opacity = currentGroup > 0 ? '1' : '0.5';
+    leftNav.style.pointerEvents = currentGroup > 0 ? 'auto' : 'none';
+    
+    // Show/hide right button
+    rightNav.style.opacity = currentGroup < totalGroups - 1 ? '1' : '0.5';
+    rightNav.style.pointerEvents = currentGroup < totalGroups - 1 ? 'auto' : 'none';
+}
+
+// Initialize button visibility and click handlers
+document.addEventListener('DOMContentLoaded', () => {
+    updateNavButtonsVisibility();
+    
+    // Update click handlers
+    document.querySelector('.left-nav').addEventListener('click', () => scrollSocialLinks(-1));
+    document.querySelector('.right-nav').addEventListener('click', () => scrollSocialLinks(1));
+}); 

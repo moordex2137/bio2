@@ -236,30 +236,86 @@ body {
     transform: translateX(-50%) translateY(0);
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
-    background: rgba(30, 31, 34, 0.8);
-    padding: 8px;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.social-link {
-    font-size: 20px;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-    color: #b5bac1;
-    text-decoration: none;
+.social-links-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
 }
 
-.social-link:hover {
-    opacity: 1;
+.social-links {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(30, 31, 34, 0.8);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: calc(40px * 5 + 8px * 4); /* Exactly 5 items (40px each) + 4 gaps (8px each) */
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+}
+
+.social-links-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+    gap: 8px;
+    margin: 0 auto;
+}
+
+.social-link {
+    position: relative;
+    font-size: 22px;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #2b2d31;
+    border-radius: 50%;
+    border: none;
+    flex: 0 0 40px;
+}
+
+.nav-button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(30, 31, 34, 0.8);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease, opacity 0.3s ease;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.nav-button:hover {
+    background: #313338;
+    transform: scale(1.1);
+}
+
+.nav-button:active {
+    transform: scale(0.95);
+}
+
+.nav-button[style*="opacity: 0.5"] {
+    cursor: default;
+}
+
+.nav-button[style*="opacity: 0.5"]:hover {
+    background: rgba(30, 31, 34, 0.8);
+    transform: none;
 }
 
 .activity-container {
@@ -516,22 +572,6 @@ body {
 }
 
 /* Update social link styles */
-.social-link {
-    position: relative;
-    font-size: 22px;
-    text-decoration: none;
-    opacity: 0.8;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: #2b2d31;
-    border-radius: 50%;
-    border: none;
-}
-
 .social-link:hover {
     opacity: 1;
     transform: translateY(-2px);
@@ -578,4 +618,16 @@ body {
     100% {
         background-position: 0% 50%;
     }
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0.9);
+    transition: filter 0.2s ease;
+}
+
+.social-link:hover .social-icon {
+    filter: brightness(1.2);
 }
