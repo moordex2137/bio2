@@ -329,6 +329,37 @@ body {
     border-radius: 8px;
     font-size: 14px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.discord-activity.playing {
+    --activity-color: 88, 101, 242;
+}
+
+.discord-activity.streaming {
+    --activity-color: 89, 54, 149;
+}
+
+.discord-activity.listening {
+    --activity-color: 29, 185, 84;
+}
+
+.discord-activity.watching {
+    --activity-color: 255, 69, 58;
+}
+
+.discord-activity.competing {
+    --activity-color: 255, 171, 0;
+}
+
+.discord-activity.playing,
+.discord-activity.streaming,
+.discord-activity.listening,
+.discord-activity.watching,
+.discord-activity.competing {
+    animation: outlineAnimation 2s ease-in-out infinite;
 }
 
 .activity-image-container {
@@ -629,4 +660,104 @@ body {
 
 .social-link:hover .social-icon {
     filter: brightness(1.2);
+}
+
+.netlify-badge-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.netlify-toggle {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.netlify-badge-container:hover .netlify-toggle {
+    color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+}
+
+.netlify-toggle:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: rotate(90deg);
+}
+
+.netlify-badge {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateX(20px);
+}
+
+.netlify-badge.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+@keyframes outlineAnimation {
+    0% {
+        border-color: rgba(var(--activity-color), 0.4);
+        box-shadow: 0 0 10px rgba(var(--activity-color), 0.1);
+    }
+    50% {
+        border-color: rgba(var(--activity-color), 0.8);
+        box-shadow: 0 0 20px rgba(var(--activity-color), 0.2);
+    }
+    100% {
+        border-color: rgba(var(--activity-color), 0.4);
+        box-shadow: 0 0 10px rgba(var(--activity-color), 0.1);
+    }
+}
+
+.discord-activity {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.discord-activity.playing {
+    --activity-color: 88, 101, 242;
+}
+
+.discord-activity.streaming {
+    --activity-color: 89, 54, 149;
+}
+
+.discord-activity.listening {
+    --activity-color: 29, 185, 84;
+}
+
+.discord-activity.watching {
+    --activity-color: 255, 69, 58;
+}
+
+.discord-activity.competing {
+    --activity-color: 255, 171, 0;
+}
+
+.discord-activity.playing,
+.discord-activity.streaming,
+.discord-activity.listening,
+.discord-activity.watching,
+.discord-activity.competing {
+    animation: outlineAnimation 2s ease-in-out infinite;
 }

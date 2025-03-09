@@ -84,6 +84,29 @@ function updateActivityDisplay() {
     const activityName = document.getElementById('activity-name');
     const activityState = document.getElementById('activity-state');
     const activityImage = document.getElementById('activity-image');
+    const activityContainer = document.querySelector('.discord-activity');
+
+    // Remove all activity classes
+    activityContainer.classList.remove('playing', 'streaming', 'listening', 'watching', 'competing');
+    
+    // Add appropriate activity class
+    switch (activity.type) {
+        case 0:
+            activityContainer.classList.add('playing');
+            break;
+        case 1:
+            activityContainer.classList.add('streaming');
+            break;
+        case 2:
+            activityContainer.classList.add('listening');
+            break;
+        case 3:
+            activityContainer.classList.add('watching');
+            break;
+        case 5:
+            activityContainer.classList.add('competing');
+            break;
+    }
 
     // Set activity name with type
     activityName.textContent = getActivityType(activity.type) + ' ' + activity.name;
@@ -145,7 +168,6 @@ function updateActivityDisplay() {
     }
 
     // Show activity container
-    const activityContainer = document.querySelector('.activity-container');
     if (activityContainer) {
         activityContainer.style.display = 'block';
     }
@@ -275,4 +297,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update click handlers
     document.querySelector('.left-nav').addEventListener('click', () => scrollSocialLinks(-1));
     document.querySelector('.right-nav').addEventListener('click', () => scrollSocialLinks(1));
+});
+
+// Add Netlify badge toggle functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.querySelector('.netlify-toggle');
+    const netlifyBadge = document.querySelector('.netlify-badge');
+    
+    toggleButton.addEventListener('click', () => {
+        netlifyBadge.classList.toggle('show');
+    });
 }); 
