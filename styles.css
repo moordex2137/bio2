@@ -261,7 +261,7 @@ body {
     display: flex;
     transition: transform 0.3s ease;
     gap: 8px;
-    margin: 0 auto;
+    width: fit-content;
 }
 
 .social-link {

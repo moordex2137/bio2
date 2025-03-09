@@ -219,19 +219,29 @@ const itemsPerGroup = 5;
 
 function scrollSocialLinks(direction) {
     const wrapper = document.querySelector('.social-links-wrapper');
+    const container = document.querySelector('.social-links');
     const items = wrapper.querySelectorAll('.tooltip-wrapper');
-    const totalGroups = Math.ceil(items.length / itemsPerGroup);
-
-    // Update current group with bounds checking
-    currentGroup = Math.max(0, Math.min(totalGroups - 1, currentGroup + direction));
+    const itemWidth = 48; // 40px width + 8px gap
+    const containerWidth = container.offsetWidth;
+    const totalWidth = items.length * itemWidth;
     
-    // Calculate the width of one group (including gaps)
-    const itemWidth = 40; // Item width
-    const gapWidth = 8;  // Gap width
-    const groupWidth = (itemWidth * itemsPerGroup) + (gapWidth * (itemsPerGroup - 1));
+    // Calculate maximum scroll distance to show last items perfectly
+    const maxScroll = Math.max(0, totalWidth - containerWidth);
+    
+    // Calculate the scroll amount based on container width
+    const currentScroll = Math.abs(parseInt(wrapper.style.transform?.split('translateX(')[1]) || 0);
+    let newScroll = currentScroll + (direction * containerWidth);
+    
+    // If scrolling right and would show empty space, snap to end
+    if (direction > 0 && newScroll + containerWidth > totalWidth) {
+        newScroll = maxScroll;
+    }
+    
+    // Ensure we don't scroll past the bounds
+    newScroll = Math.max(0, Math.min(maxScroll, newScroll));
     
     // Apply the transform
-    wrapper.style.transform = `translateX(-${currentGroup * groupWidth}px)`;
+    wrapper.style.transform = `translateX(-${newScroll}px)`;
 
     // Update button visibility
     updateNavButtonsVisibility();
@@ -239,19 +249,23 @@ function scrollSocialLinks(direction) {
 
 function updateNavButtonsVisibility() {
     const wrapper = document.querySelector('.social-links-wrapper');
+    const container = document.querySelector('.social-links');
     const items = wrapper.querySelectorAll('.tooltip-wrapper');
-    const totalGroups = Math.ceil(items.length / itemsPerGroup);
+    const itemWidth = 48; // 40px width + 8px gap
+    const totalWidth = items.length * itemWidth;
+    const currentScroll = Math.abs(parseInt(wrapper.style.transform?.split('translateX(')[1]) || 0);
+    const maxScroll = Math.max(0, totalWidth - container.offsetWidth);
     
     const leftNav = document.querySelector('.left-nav');
     const rightNav = document.querySelector('.right-nav');
 
     // Show/hide left button
-    leftNav.style.opacity = currentGroup > 0 ? '1' : '0.5';
-    leftNav.style.pointerEvents = currentGroup > 0 ? 'auto' : 'none';
+    leftNav.style.opacity = currentScroll > 0 ? '1' : '0.5';
+    leftNav.style.pointerEvents = currentScroll > 0 ? 'auto' : 'none';
     
     // Show/hide right button
-    rightNav.style.opacity = currentGroup < totalGroups - 1 ? '1' : '0.5';
-    rightNav.style.pointerEvents = currentGroup < totalGroups - 1 ? 'auto' : 'none';
+    rightNav.style.opacity = currentScroll < maxScroll ? '1' : '0.5';
+    rightNav.style.pointerEvents = currentScroll < maxScroll ? 'auto' : 'none';
 }
 
 // Initialize button visibility and click handlers
