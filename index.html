@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Links</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cherry-blossom"></div>
+    <div class="container">
+        <div class="profile-card">
+            <img src="https://cdn.discordapp.com/avatars/525363740347072552/avatar.png" alt="Profile Picture" class="profile-img" id="profile-img">
+            <div class="profile-info">
+                <div class="username" id="username">Loading...</div>
+                <div class="badge">★</div>
+            </div>
+            
+            <!-- Discord Badges -->
+            <div class="badges">
+                <div class="tooltip-wrapper">
+                    <div class="badge-item">
+                        <span class="badge-icon">⭐</span>
+                        <div class="discord-tooltip">
+                            <div class="tooltip-header">Subskrybent Nitro</div>
+                            <div class="tooltip-content">Aktywna subskrypcja Discord Nitro</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper">
+                    <div class="badge-item">
+                        <span class="badge-icon">👨‍💻</span>
+                        <div class="discord-tooltip">
+                            <div class="tooltip-header">Aktywny Deweloper</div>
+                            <div class="tooltip-content">Opublikował aplikację Discord</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper">
+                    <div class="badge-item">
+                        <span class="badge-icon">⚖️</span>
+                        <div class="discord-tooltip">
+                            <div class="tooltip-header">HypeSquad Balance</div>
+                            <div class="tooltip-content">Członek Discord HypeSquad Balance</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper">
+                    <div class="badge-item">
+                        <span class="badge-icon">🚀</span>
+                        <div class="discord-tooltip">
+                            <div class="tooltip-header">Booster Serwera</div>
+                            <div class="tooltip-content">Wspiera serwery Discord</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bio-text">Pytasz dzika czy sra w lesie?</div>
+
+            <!-- Social Links -->
+            <div class="social-links">
+                <div class="tooltip-wrapper">
+                    <a href="https://moordeks.me" target="_blank" class="social-link">
+                        🌐
+                        <div class="discord-tooltip">
+                            <div class="tooltip-header">Strona</div>
+                            <div class="tooltip-content">
+                                <div class="tooltip-title">moordeks.me</div>
+                                <div class="tooltip-desc">Moja strona internetowa</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tooltip-wrapper">
+                    <a href="https://discord.com/users/525363740347072552" target="_blank" class="social-link">
+                        💬
+                        <div class="discord-tooltip">
+                            <div class="tooltip-header">Discord</div>
+                            <div class="tooltip-content">
+                                <div class="tooltip-title">moordeks</div>
+                                <div class="tooltip-desc">Dodaj mnie na Discord</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tooltip-wrapper">
+                    <a href="https://steamcommunity.com/id/mordeks/" target="_blank" class="social-link">
+                        🎮
+                        <div class="discord-tooltip">
+                            <div class="tooltip-header">Steam</div>
+                            <div class="tooltip-content">
+                                <div class="tooltip-title">moordeks</div>
+                                <div class="tooltip-desc">Poziom 43</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tooltip-wrapper">
+                    <a href="https://www.tiktok.com/@moordeks" target="_blank" class="social-link">
+                        📱
+                        <div class="discord-tooltip">
+                            <div class="tooltip-header">TikTok</div>
+                            <div class="tooltip-content">
+                                <div class="tooltip-title">@moordeks</div>
+                                <div class="tooltip-desc">Obserwuj mnie na TikTok</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="tooltip-wrapper">
+                    <a href="https://github.com/moordex2137" target="_blank" class="social-link">
+                        💻
+                    </a>
+                    <div class="discord-tooltip">
+                        <div class="tooltip-header">GitHub</div>
+                        <div class="tooltip-content">Sprawdź moje projekty</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discord Activity -->
+            <div class="activity-container">
+                <div class="discord-activity">
+                    <div class="activity-item">
+                        <div class="activity-image-container">
+                            <img src="" alt="Activity" id="activity-image">
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-name" id="activity-name"></div>
+                            <div class="activity-state" id="activity-state"></div>
+                        </div>
+                    </div>
+                    <div class="activity-nav">
+                        <span class="arrow" onclick="previousActivity()">←</span>
+                        <span class="arrow" onclick="nextActivity()">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Button -->
+        <div class="profile-section">
+            <div class="katujemy-info">
+                <img src="katujemy.webp" alt="Katujemy.eu Logo" class="katujemy-logo">
+                <div class="katujemy-title">Katujemy.eu - Sieć Counter-Strike</div>
+            </div>
+            <div class="katujemy-buttons">
+                <a href="https://dc.katujemy.eu/" target="_blank" class="katujemy-button discord-button">DISCORD</a>
+                <a href="https://katujemy.eu" target="_blank" class="katujemy-button forum-button">FORUM</a>
+            </div>
+        </div>
+    </div>
+    <script src="background.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
