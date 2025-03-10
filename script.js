@@ -56,14 +56,26 @@ function updateProfile(data) {
     }
 
     // Update activities
+    const activityContainer = document.querySelector('.activity-container');
+    const discordActivity = document.querySelector('.discord-activity');
+    
     if (data.activities && data.activities.length > 0) {
         activities = data.activities;
         updateActivityDisplay();
+        activityContainer.style.display = 'block';
     } else {
-        const activityContainer = document.querySelector('.activity-container');
-        if (activityContainer) {
-            activityContainer.style.display = 'none';
-        }
+        // Show offline message
+        activityContainer.style.display = 'block';
+        discordActivity.classList.remove('playing', 'streaming', 'listening', 'watching', 'competing');
+        discordActivity.classList.add('offline');
+        
+        const activityName = document.getElementById('activity-name');
+        const activityState = document.getElementById('activity-state');
+        const activityImage = document.getElementById('activity-image');
+        
+        activityName.textContent = 'Offline';
+        activityState.innerHTML = 'Obecnie brak aktywności';
+        activityImage.style.display = 'none';
     }
 
     // Update status

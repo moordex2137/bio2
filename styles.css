@@ -362,6 +362,28 @@ body {
     animation: outlineAnimation 2s ease-in-out infinite;
 }
 
+.discord-activity.offline {
+    --activity-color: 114, 118, 125;
+    opacity: 0.8;
+}
+
+.discord-activity.offline #activity-name {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.discord-activity.offline #activity-state {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.discord-activity.playing,
+.discord-activity.streaming,
+.discord-activity.listening,
+.discord-activity.watching,
+.discord-activity.competing,
+.discord-activity.offline {
+    animation: outlineAnimation 2s ease-in-out infinite;
+}
+
 .activity-image-container {
     flex-shrink: 0;
     width: 80px;
@@ -721,43 +743,4 @@ body {
         border-color: rgba(var(--activity-color), 0.4);
         box-shadow: 0 0 10px rgba(var(--activity-color), 0.1);
     }
-}
-
-.discord-activity {
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    font-size: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.discord-activity.playing {
-    --activity-color: 88, 101, 242;
-}
-
-.discord-activity.streaming {
-    --activity-color: 89, 54, 149;
-}
-
-.discord-activity.listening {
-    --activity-color: 29, 185, 84;
-}
-
-.discord-activity.watching {
-    --activity-color: 255, 69, 58;
-}
-
-.discord-activity.competing {
-    --activity-color: 255, 171, 0;
-}
-
-.discord-activity.playing,
-.discord-activity.streaming,
-.discord-activity.listening,
-.discord-activity.watching,
-.discord-activity.competing {
-    animation: outlineAnimation 2s ease-in-out infinite;
 }
